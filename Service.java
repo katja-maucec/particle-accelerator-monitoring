@@ -41,7 +41,7 @@ public class Service {
     public void saveToFile() throws IOException {
         
         for (String sensorName : archive.keySet()) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(sensorName));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(sensorName + ".txt"));
             for (Datapoint datapoint : archive.get(sensorName)) {
                 writer.write(datapoint.value + " at " + datapoint.time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)));
                 writer.newLine();
