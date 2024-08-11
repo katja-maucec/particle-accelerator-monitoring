@@ -170,6 +170,9 @@ public class GUI extends JFrame{
                 //update text
                 curTemp.setText("---");
 
+                //update alert
+                tempAlert.setText("\n");
+
                 //update buttons
                 tempOn.setEnabled(true);
                 tempMon.setEnabled(false);
@@ -296,6 +299,9 @@ public class GUI extends JFrame{
 
                 //update text
                 curHum.setText("---");
+
+                //update alert
+                humAlert.setText("\n");
 
                 //update buttons
                 humOn.setEnabled(true);
@@ -424,6 +430,9 @@ public class GUI extends JFrame{
                 //update text
                 curRad.setText("---");
 
+                //update alert
+                radAlert.setText("\n");
+
                 //update buttons
                 radOn.setEnabled(true);
                 radMon.setEnabled(false);
@@ -550,6 +559,9 @@ public class GUI extends JFrame{
 
                 //update text
                 curPres.setText("---");
+
+                //update alert
+                presAlert.setText("\n");
 
                 //update buttons
                 presOn.setEnabled(true);
