@@ -15,7 +15,6 @@ import java.time.format.FormatStyle;
 
 public class GUI extends JFrame{
 
-    /* Constructing sensor objects as instance variables*/
     //components of FAIR are cooled to as low as -269C and need thermal control within +/-0.5C
     Sensor tempSensor = new Sensor(State.OFF, -269.5, -268.5, "temperature", true);
 
@@ -33,32 +32,26 @@ public class GUI extends JFrame{
     //service instance variable responsible for archiving and monitoring
     Service service = new Service();
 
+    //final variables that determind formatting
     final int WIDTH = 160;
-
     final int HEIGHT = 320;
-
     final Font HEADER1 = new Font("Dialog", Font.BOLD, 18);
-
     final Color COL_COLOR = new Color(206, 132, 132);
-
     final EmptyBorder HEADER_BORDER = new EmptyBorder(20, 20, 10, 20);
 
     public GUI() {
-        /* Loading GUI Frame */
+        //loading GUI frame
         super("Particle Accelerator Monitoring");
         setBackground(new Color(229, 191, 191));
         
-        //row 1
+        //title
         JLabel title = new JLabel("Live Sensor Monitoring", JLabel.CENTER);
         title.setFont(new Font("Dialog", Font.BOLD, 30));
         title.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         title.setBorder(new EmptyBorder(20, 20, 20, 20));
         add(title);
 
-        //row 3
-        JPanel sensorRow = new JPanel();
-
-        //row 3 col 1
+        //temperature column
         JPanel col1 = new JPanel();
         col1.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         col1.setBackground(COL_COLOR);
@@ -86,7 +79,7 @@ public class GUI extends JFrame{
         col1.add(tempTime);
         col1.add(tempStatus);
 
-        //add buttons
+        //temperature buttons
         JButton tempOn = new JButton("Turn on");
         col1.add(tempOn);
         tempOn.setEnabled(true);
@@ -113,7 +106,7 @@ public class GUI extends JFrame{
 
         col1.add(tempAlert);
 
-        //manage action listeners
+        //temperature action listeners
         tempOn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update tempSensor's state
@@ -131,7 +124,6 @@ public class GUI extends JFrame{
                 tempOff.setEnabled(true);
             }
         });
-
         tempMon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -148,7 +140,6 @@ public class GUI extends JFrame{
                 tempStop.setEnabled(true);
             }
         });
-
         tempStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -165,7 +156,6 @@ public class GUI extends JFrame{
                 tempStop.setEnabled(false);
             }
         });
-
         tempOff.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -188,7 +178,7 @@ public class GUI extends JFrame{
             }
         });
 
-        //row 3 col 2
+        //humidity column
         JPanel col2 = new JPanel();
         col2.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         col2.setBackground(COL_COLOR);
@@ -216,7 +206,7 @@ public class GUI extends JFrame{
         col2.add(humTime);
         col2.add(humStatus);
 
-        //add buttons
+        //humidity buttons
         JButton humOn = new JButton("Turn on");
         col2.add(humOn);
         humOn.setEnabled(true);
@@ -243,7 +233,7 @@ public class GUI extends JFrame{
 
         col2.add(humAlert);
 
-        //manage action listeners
+        //humidity action listeners
         humOn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update humSensor's state
@@ -261,7 +251,6 @@ public class GUI extends JFrame{
                 humOff.setEnabled(true);
             }
         });
-
         humMon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -278,7 +267,6 @@ public class GUI extends JFrame{
                 humStop.setEnabled(true);
             }
         });
-
         humStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -295,7 +283,6 @@ public class GUI extends JFrame{
                 humStop.setEnabled(false);
             }
         });
-
         humOff.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -318,7 +305,7 @@ public class GUI extends JFrame{
             }
         });
 
-        //row 3 col 3
+        //radiation column
         JPanel col3 = new JPanel();
         col3.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         col3.setBackground(COL_COLOR);
@@ -346,7 +333,7 @@ public class GUI extends JFrame{
         col3.add(radTime);
         col3.add(radStatus);
 
-        //add buttons
+        //radiation buttons
         JButton radOn = new JButton("Turn on");
         col3.add(radOn);
         radOn.setEnabled(true);
@@ -373,7 +360,7 @@ public class GUI extends JFrame{
 
         col3.add(radAlert);
 
-        //manage action listeners
+        //radiation action listeners
         radOn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update radSensor's state
@@ -391,7 +378,6 @@ public class GUI extends JFrame{
                 radOff.setEnabled(true);
             }
         });
-
         radMon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -408,7 +394,6 @@ public class GUI extends JFrame{
                 radStop.setEnabled(true);
             }
         });
-
         radStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -425,7 +410,6 @@ public class GUI extends JFrame{
                 radStop.setEnabled(false);
             }
         });
-
         radOff.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -448,7 +432,7 @@ public class GUI extends JFrame{
             }
         });
 
-        //row 3 col 4
+        //pressure column
         JPanel col4 = new JPanel();
         col4.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         col4.setBackground(COL_COLOR);
@@ -476,7 +460,7 @@ public class GUI extends JFrame{
         col4.add(presTime);
         col4.add(presStatus);
 
-        //add buttons
+        //pressure buttons
         JButton presOn = new JButton("Turn on");
         col4.add(presOn);
         presOn.setEnabled(true);
@@ -503,7 +487,7 @@ public class GUI extends JFrame{
 
         col4.add(presAlert);
 
-        //manage action listeners
+        //pressure action listeners
         presOn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update presSensor's state
@@ -521,7 +505,6 @@ public class GUI extends JFrame{
                 presOff.setEnabled(true);
             }
         });
-
         presMon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -538,7 +521,6 @@ public class GUI extends JFrame{
                 presStop.setEnabled(true);
             }
         });
-
         presStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -555,7 +537,6 @@ public class GUI extends JFrame{
                 presStop.setEnabled(false);
             }
         });
-
         presOff.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //update state
@@ -578,25 +559,23 @@ public class GUI extends JFrame{
             }
         });
 
+        //row for sensor columns
+        JPanel sensorRow = new JPanel();
         sensorRow.add(col1);
         sensorRow.add(col2);
         sensorRow.add(col3);
         sensorRow.add(col4);
         sensorRow.setLayout(new FlowLayout());
-
         add(sensorRow);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        //panel updating
+        //update panel every second and trigger alarm if necessary
         int delay = 1000;
         ActionListener action = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                
                 if (tempSensor.getState() == State.MEASURING) {
-                    //generate data
+                    //generate and display data
                     double tempVal = tempSensor.generateData();
-
-                    //display data
                     curTemp.setText(String.format("%.3f \u2103", tempVal));
 
                     //archive and monitor
@@ -610,15 +589,12 @@ public class GUI extends JFrame{
                     } else {
                         tempAlert.setText("\n");
                     }
-
                     pack();
                 }
 
                 if (humSensor.getState() == State.MEASURING) {
-                    //generate data
+                    //generate and display data
                     double humVal = humSensor.generateData();
-
-                    //display data
                     curHum.setText(String.format("%.3f %%", humVal));
 
                     //archive and monitor
@@ -629,15 +605,12 @@ public class GUI extends JFrame{
                     } else {
                         humAlert.setText("\n");
                     }
-
                     pack();
                 }
 
                 if (radSensor.getState() == State.MEASURING) {
-                    //generate data
+                    //generate and display data
                     double radVal = radSensor.generateData();
-                
-                    //display data
                     curRad.setText(String.format("%.3f MeV", radVal));
                 
                     //archive and monitor
@@ -648,15 +621,12 @@ public class GUI extends JFrame{
                     } else {
                         radAlert.setText("\n");
                     }
-
                     pack();
                 }
 
                 if (presSensor.getState() == State.MEASURING) {
-                    //generate data
+                    //generate and display data
                     double presVal = presSensor.generateData();
-                
-                    //display data
                     curPres.setText(String.format("%.3f nanombar", presVal));
                 
                     //archive and monitor
@@ -667,7 +637,6 @@ public class GUI extends JFrame{
                     } else {
                         presAlert.setText("\n");
                     }
-
                     pack();
                 }
             }
@@ -689,8 +658,7 @@ public class GUI extends JFrame{
         setVisible(true);
     }
     public static void main(String[] args) {
-
-        /* Invoke Swing for GUI */
+        //invoke Swing for GUI
         SwingUtilities.invokeLater(GUI::new);
     }
 }
