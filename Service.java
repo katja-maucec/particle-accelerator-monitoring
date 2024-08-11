@@ -18,10 +18,13 @@ public class Service {
         archive.put("pressure", new ArrayList<>());
     }
 
-    /*
-     * responsible for archiving and monitoring
+    /**
+     * Archives the data into a hashmap and monitors values; raises alarm if
+     * datapoint is outside of sensor's allowed range.
      * 
-     * return true if alarm should be triggered
+     * @param sensor supplies the respective key for hashmap and range for alarm handling
+     * @param dataVal must lie within the sensor's allowed range
+     * @return a String denoting whether dataVal is within the valid range
      */
     public String measure(Sensor sensor, double dataVal) {
         //archiving
@@ -34,12 +37,16 @@ public class Service {
         } else if (dataVal > sensor.getMax()) {
             return "too high";
         }
-
         return  "good";
     }
 
+    /**
+     * Upon exiting the program, each sensor will produce a file that
+     * contains its respective datapoints in chronological order.
+     * 
+     * @throws IOException
+     */
     public void saveToFile() throws IOException {
-        
         for (String sensorName : archive.keySet()) {
             BufferedWriter writer = new BufferedWriter(new FileWriter(sensorName + ".txt"));
             for (Datapoint datapoint : archive.get(sensorName)) {
