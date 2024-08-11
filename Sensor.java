@@ -67,6 +67,7 @@ public class Sensor {
         double stdDev = 0.3 * (this.max - this.min);
         Random rand = new Random();
         double randNum = rand.nextGaussian() * stdDev + mean;
+        //sensors that cannot have negative values will keep resampling until a nonnegative number
         if (!this.canNegative) {
             while(randNum < 0) {
                 randNum = rand.nextGaussian() * stdDev + mean;
